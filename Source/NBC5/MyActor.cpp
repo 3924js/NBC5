@@ -11,7 +11,7 @@ AMyActor::AMyActor()
 	Steps = 0;
 	MoveCooldown = 0.0;
 	EventCount = 0;
-	Origin = GetActorLocation();
+	Origin = FVector(0, 0, 0);
 }
 
 // Called when the game starts or when spawned
@@ -22,7 +22,7 @@ void AMyActor::BeginPlay()
 	
 	//시작 위치 고정
 	SetActorLocation(FVector(0, 50, 0));
-
+	Origin = GetActorLocation();
 	GEngine->AddOnScreenDebugMessage(-1, 60.0, FColor::Cyan, FString::Printf(TEXT("시작합니다!")), true);
 }
 
@@ -67,5 +67,5 @@ void AMyActor::Rotate(){ //yaw 90도 회전
 
 void AMyActor::SimpleEvent(){	//이벤트 메세지 출력
 	EventCount++;
-	GEngine->AddOnScreenDebugMessage(-1, 60.0, FColor::Magenta, FString::Printf(TEXT("이벤트가 호출됬습니다!")), true);
+	GEngine->AddOnScreenDebugMessage(-1, 60.0, FColor::Magenta, FString::Printf(TEXT("이벤트가 호출됐습니다!")), true);
 }
